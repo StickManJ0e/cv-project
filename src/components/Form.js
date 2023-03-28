@@ -1,27 +1,28 @@
 import React from "react";
 
 let Form = (props) => {
-    const { addWork, workExperiences, educationExperiences, addEducation } = props;
+    const { onFormChange, personal, addWork, removeWork, workExperiences, educationExperiences, addEducation, removeEducation } = props;
 
     return (
-        <form>
+        <form onChange={onFormChange}>
             <fieldset>
                 <legend>Personal Information</legend>
-                <input type="text" name="firstName" placeholder="First name"></input>
-                <input type="text" name="lastName" placeholder="Last name"></input>
-                <input type="email" name="email" placeholder="Email"></input>
-                <input type="number" name="phoneNumber" placeholder="Phone Number"></input>
+                <input type="text" name="firstName" placeholder="First name" defaultValue={personal.firstName}></input>
+                <input type="text" name="lastName" placeholder="Last name" defaultValue={personal.lastName}></input>
+                <input type="email" name="email" placeholder="Email" defaultValue={personal.email}></input>
+                <input type="number" name="phoneNumber" placeholder="Phone Number" defaultValue={personal.phoneNumber}></input>
             </fieldset>
 
             <fieldset>
                 <legend>Education</legend>
                 {educationExperiences.map((education) => {
                     return (
-                        <div>
-                            <input type="text" name="schoolName" placeholder="School Name"></input>
-                            <input type="text" name="degree" placeholder="Degree"></input>
-                            <input type="text" name="studyFrom" placeholder="From"></input>
-                            <input type="text" name="studyTo" placeholder="To"></input>
+                        <div className="education-div" key={education.id} id={education.id}>
+                            <input type="text" name="schoolName" placeholder="School Name" defaultValue={education.schoolName}></input>
+                            <input type="text" name="degree" placeholder="Degree" defaultValue={education.degree}></input>
+                            <input type="text" name="studyFrom" placeholder="From" defaultValue={education.start}></input>
+                            <input type="text" name="studyTo" placeholder="To" defaultValue={education.end}></input>
+                            <button onClick={() => { removeEducation(education.id) }} id="removeWork">Delete</button>
                         </div>
                     )
                 })}
@@ -32,12 +33,13 @@ let Form = (props) => {
                 <legend>Experience</legend>
                 {workExperiences.map((work) => {
                     return (
-                        <div>
-                            <input type="text" name="company" placeholder="Company"></input>
-                            <input type="text" name="position" placeholder="Position Title"></input>
-                            <input type="text" name="mainTasks" placeholder="Main Tasks of Job"></input>
-                            <input type="text" name="studyFrom" placeholder="From"></input>
-                            <input type="text" name="studyTo" placeholder="To"></input>
+                        <div className="work-div" key={work.id} id={work.id}>
+                            <input type="text" name="company" placeholder="Company" defaultValue={work.company}></input>
+                            <input type="text" name="position" placeholder="Position Title" defaultValue={work.position}></input>
+                            <input type="text" name="mainTasks" placeholder="Main Tasks of Job" defaultValue={work.mainTasks}></input>
+                            <input type="text" name="workFrom" placeholder="From" defaultValue={work.start}></input>
+                            <input type="text" name="workTo" placeholder="To" defaultValue={work.end}></input>
+                            <button onClick={() => { removeWork(work.id) }} id="removeWork">Delete</button>
                         </div>
                     )
                 })}
