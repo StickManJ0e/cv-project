@@ -82,7 +82,7 @@ class App extends Component {
     //Setting each education object with form information
     let educationDivs = document.querySelectorAll('.education-input-div');
     educationDivs.forEach((educationDiv) => {
-      //Get div key and corresponding index number
+      //Get div key and corresponding index number.
       let key = educationDiv.getAttribute('id');
       let index = this.state.educationExperiences.findIndex((education) => education.id === key);
       //Create new education object with from information and new array with the new object
