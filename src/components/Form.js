@@ -9,15 +9,17 @@ let Form = (props) => {
                 <legend>Personal Information</legend>
                 <input type="text" name="firstName" placeholder="First name" defaultValue={personal.firstName}></input>
                 <input type="text" name="lastName" placeholder="Last name" defaultValue={personal.lastName}></input>
+                <input type="text" name="title" placeholder="Title" defaultValue={personal.title}></input>
                 <input type="email" name="email" placeholder="Email" defaultValue={personal.email}></input>
                 <input type="number" name="phoneNumber" placeholder="Phone Number" defaultValue={personal.phoneNumber}></input>
+                <input type="text" name="about" placeholder="About you" defaultValue={personal.about}></input>
             </fieldset>
 
             <fieldset>
                 <legend>Education</legend>
                 {educationExperiences.map((education) => {
                     return (
-                        <div className="education-div" key={education.id} id={education.id}>
+                        <div className="education-input-div" key={education.id} id={education.id}>
                             <input type="text" name="schoolName" placeholder="School Name" defaultValue={education.schoolName}></input>
                             <input type="text" name="degree" placeholder="Degree" defaultValue={education.degree}></input>
                             <input type="text" name="studyFrom" placeholder="From" defaultValue={education.start}></input>
@@ -33,7 +35,7 @@ let Form = (props) => {
                 <legend>Experience</legend>
                 {workExperiences.map((work) => {
                     return (
-                        <div className="work-div" key={work.id} id={work.id}>
+                        <div className="work-input-div" key={work.id} id={work.id}>
                             <input type="text" name="company" placeholder="Company" defaultValue={work.company}></input>
                             <input type="text" name="position" placeholder="Position Title" defaultValue={work.position}></input>
                             <input type="text" name="mainTasks" placeholder="Main Tasks of Job" defaultValue={work.mainTasks}></input>
@@ -45,7 +47,6 @@ let Form = (props) => {
                 })}
                 <button onClick={(e) => { e.preventDefault(); addWork() }} >Add Experience</button>
             </fieldset>
-            <button type="submit">Generate</button>
         </form>
     )
 }

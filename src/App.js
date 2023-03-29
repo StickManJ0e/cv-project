@@ -11,9 +11,11 @@ class App extends Component {
     this.state = {
       personal: {
         firstName: '',
-        lastname: '',
+        lastName: '',
+        title: '',
         email: '',
         phoneNumber: '',
+        about: '',
       },
       education: {
         schoolName: '',
@@ -78,12 +80,11 @@ class App extends Component {
 
   setEducationInfo = () => {
     //Setting each education object with form information
-    let educationDivs = document.querySelectorAll('.education-div');
+    let educationDivs = document.querySelectorAll('.education-input-div');
     educationDivs.forEach((educationDiv) => {
       //Get div key and corresponding index number
       let key = educationDiv.getAttribute('id');
       let index = this.state.educationExperiences.findIndex((education) => education.id === key);
-
       //Create new education object with from information and new array with the new object
       let newObject = {
         schoolName: document.querySelector(`div#${key} >input[name="schoolName"]`).value,
@@ -103,7 +104,7 @@ class App extends Component {
   }
 
   setWorkInfo = () => {
-    let workDivs = document.querySelectorAll('.work-div');
+    let workDivs = document.querySelectorAll('.work-input-div');
     workDivs.forEach((workDiv) => {
       //Get div key and corresponding index number
       let key = workDiv.getAttribute('id');
@@ -135,9 +136,11 @@ class App extends Component {
       //Set state for personal information
       personal: {
         firstName: document.querySelector('input[name="firstName"]').value,
-        lastname: document.querySelector('input[name="lastName"]').value,
+        lastName: document.querySelector('input[name="lastName"]').value,
+        title: document.querySelector('input[name="title"]').value,
         email: document.querySelector('input[name="email"]').value,
         phoneNumber: document.querySelector('input[name="phoneNumber"]').value,
+        about: document.querySelector('input[name="about"]').value,
       },
     })
 
@@ -160,7 +163,11 @@ class App extends Component {
           removeEducation={this.removeEducation}
           educationExperiences={educationExperiences}
         />
-        <CV />
+        <CV
+          personal={personal}
+          educationExperiences={educationExperiences}
+          workExperiences={workExperiences}
+        />
       </div>
     )
   }
