@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import Form from './components/Form'
 import CV from './components/CV';
 import uniqid from "uniqid";
